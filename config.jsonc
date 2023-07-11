@@ -70,7 +70,7 @@
     },
 
     "disk": {
-        "format": " 󰋊  {used}/{total} GiB ",
+        "format": " 󰋊  {used}/{total} ",
         "format-alt": " 󰋊  {percentage_used}% ",
         "interval": 1,
         "path": "/"
