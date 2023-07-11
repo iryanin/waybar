@@ -11,13 +11,15 @@
 @define-color accent4 #bb9af7;
 @define-color accent5 #7da6ff;
 @define-color accent6 #0db9d7;
+@define-color accent7 #ffcc66;
+@define-color accent8 #6699ff;
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     border: none;
     font-family: "JetBrainsMono";
     /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
-    font-size: 14px;
+    font-size: 15px;
 }
 
 window#waybar {
@@ -79,14 +81,16 @@ window#waybar.hidden {
 #custom-power,
 #memory,
 #temperature,
+#disk,
+#bluetooth,
+#wireplumber,
+#tray,
 #backlight,
 #network,
 #pulseaudio,
 #custom-media,
-#tray,
 #mode,
 #idle_inhibitor,
-#custom-power,
 #custom-pacman,
 #language {
     padding: 0px 3px;
@@ -154,10 +158,12 @@ label:focus {
     color: @alert;
 }
 
+#wireplumber,
 #pulseaudio {
     color: @accent4;
 }
 
+#wireplumber.muted,
 #pulseaudio.muted {
     color: #a0a0a0;
 }
@@ -191,10 +197,18 @@ label:focus {
 #temperature {
     color: @accent6;
 }
-
 #temperature.critical {
     background-color: @critical;
 }
+
+#bluetooth {
+    color: @accent7;
+}
+
+#disk {
+    color: @accent8;
+}
+
 
 #tray {
 
@@ -203,10 +217,6 @@ label:focus {
 #idle_inhibitor {
     background-color: #343434;
     border-radius: 4px;
-}
-
-#mpd {
-    color: #d1e231;
 }
 
 #custom-language {

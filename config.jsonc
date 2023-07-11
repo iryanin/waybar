@@ -6,15 +6,16 @@
     "margin-bottom": 0,
     "margin-left": 4,
     "margin-right": 4,
-    "modules-left": ["custom/launcher","custom/separator", "wlr/workspaces", "custom/separator", "cpu", "custom/separator","memory", "custom/separator", "disk"],
+    "modules-left": ["custom/launcher", "wlr/workspaces", "cpu", "memory", "disk", "temperature"],
     "modules-center": ["mpris"],
-    "modules-right": ["tray", "custom/separator","bluetooth", "custom/separator","network", "custom/separator","wireplumber", "custom/separator","clock", "custom/separator","custom/power"],
+    "modules-right": ["idle_inhibitor", "tray", "bluetooth", "network", "wireplumber", "clock", "custom/power"],
 
     // Modules configuration
 
 	"clock": {
-		"format": "   {:%H:%M} ",
+		"format": "   {:%H:%M:%S} ",
 		"tooltip": "true",
+        "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "   {:%d/%m} "
 	},
@@ -25,7 +26,7 @@
         // "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
-		"format": "{icon}",
+		"format": " {icon} ",
 		"on-click": "activate",
 		"format-icons": {
             // "1": "",
@@ -33,9 +34,9 @@
             // "3": "",
             // "4": "",
             // "5": "",
-			"urgent": "",
-			"active": "",
-			"default": "󰧞",
+			"urgent": "  ",
+			"active": "  ",
+			"default": " 󰧞 ",
         },
         "sort-by-number": true
     },
@@ -57,20 +58,20 @@
 	},
 
     "memory": {
-        "format": "󰍛 {}%",
-        "format-alt": "󰍛 {used}/{total} GiB",
+        "format": " 󰍛  {used}/{total} GiB ",
+        "format-alt": "󰍛 {}%",
         "interval": 1
     },
 
     "cpu": {
-        "format": "󰻠 {usage}%",
-        "format-alt": "󰻠 {avg_frequency} GHz",
+        "format": " 󰻠  {usage}% ",
+        "format-alt": " 󰻠  {avg_frequency} GHz ",
         "interval": 1
     },
 
     "disk": {
-        "format": "󰋊 {}%",
-        "format-alt": "󰋊 {used}/{total} GiB",
+        "format": " 󰋊  {used}/{total} GiB ",
+        "format-alt": " 󰋊  {percentage_used}% ",
         "interval": 1,
         "path": "/"
     },
@@ -79,6 +80,7 @@
         "format": " {ifname} ",
         "format-wifi": "   {ifname}: {essid} ({signalStrength}%) ",
         "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
+        "interval": 1,
         "format-disconnected": " 󰤭  ", //An empty format will hide the module.
         "tooltip-format": "   {ifname} via {gwaddr} ",
         "max-length": 50
@@ -86,12 +88,12 @@
 
 
 	"tray": {
-		"icon-size": 16,
-		"spacing": 5
+		"icon-size": 18,
+		"spacing": 6
 	},
 
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": " {icon} {volume}% ",
         "format-muted": "  ",
         "on-click": "qpwgraph",
         // "on-click-right": "pavucontrol",
@@ -112,10 +114,20 @@
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
 
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+        // "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": "  {temperatureC}°C ",
+        "interval": 1,
+    },
+
     "mpris": {
         "format": " {player_icon} {dynamic} ",
         "format-paused": " {status_icon} <i>{dynamic}</i> ",
         "max-length": 40,
+        "interval": 1,
         "player-icons": {
             "default": "▶",
             "mpv": "🎵"
@@ -126,6 +138,14 @@
         // "ignored-players": ["firefox"]
     },
 
+    "idle_inhibitor": {
+        "format": " {icon} ",
+        "format-icons": {
+            "activated": "  ",
+            "deactivated": "  "
+        }
+    },
+
     "custom/pipewire": {
         "tooltip": false,
         "max-length": 6,
@@ -134,13 +154,6 @@
         "on-click-right": "qpwgraph"
     },
 
-    "custom/hyprpicker": {
-        "format": " 󰈋  ",
-        "on-click": "hyprpicker -a -f hex",
-        "on-click-right": "hyprpicker -a -f rgb"
-    },
-
-    
     "custom/launcher": {
         "format":" 󰣇 ",
         "on-click": "exec rofi -show drun",
