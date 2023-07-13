@@ -81,7 +81,7 @@
         "format-wifi": "   {ifname}: {essid} ({signalStrength}%) ",
         "format-ethernet": "   {ifname}: {ipaddr}/{cidr} ",
         "interval": 1,
-        "format-disconnected": " 󰤭  ", //An empty format will hide the module.
+        "format-disconnected": " 󰤭 ", //An empty format will hide the module.
         "tooltip-format": "   {ifname} via {gwaddr} ",
         "max-length": 50
     },
@@ -97,7 +97,7 @@
         "format-muted": "  ",
         "on-click": "qpwgraph",
         // "on-click-right": "pavucontrol",
-        "format-icons": ["  ", "  ", "   "],
+        "format-icons": [" ", " ", "  "],
         "max-volume": 150,
         "scroll-step": 1
     },
