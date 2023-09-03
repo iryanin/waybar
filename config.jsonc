@@ -6,7 +6,7 @@
     "margin-bottom": 0,
     "margin-left": 4,
     "margin-right": 4,
-    "modules-left": ["custom/launcher", "wlr/workspaces", "cpu", "memory", "disk", "temperature"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "cpu", "memory", "disk", "temperature"],
     "modules-center": ["mpris"],
     "modules-right": ["idle_inhibitor", "tray", "bluetooth", "network", "wireplumber", "clock", "custom/power"],
 
@@ -21,7 +21,7 @@
 	},
 	
 
-	"wlr/workspaces": {
+	"hyprland/workspaces": {
         "all-outputs": true,
         // "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
